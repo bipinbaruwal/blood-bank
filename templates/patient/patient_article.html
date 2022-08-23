@@ -1,0 +1,47 @@
+{% extends 'patient/patient-header.html' %}
+{% block content %}
+{% load static %}
+<style>
+    
+    .head_text {
+        color: white;
+    }
+
+    .card {
+        box-shadow: 0 16px 48px #000061;
+    }
+
+
+
+</style>
+
+<header class="masthead" style="background-color: #fff2e6; border-radius: 150px 20px; ">
+    <div class="overlay"></div>
+    
+</header>
+<br>
+<div class="container" style="background-color:white;">
+    <div class="row">
+        <!-- Blog Entries Column -->
+        <div class="col-md-8 mt-3 left">
+            {% for user in data %}
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title" style="color:#990000;">{{ user.title }}</h2>
+                    
+                    <br />
+                    <img src = "{{ user.image.url }}" height= "150px" width="150px" />
+                    <br/>
+                    
+                        <br>
+                    <p class="card-text" style="text-align: justify;">{{user.content}}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+    </div>
+</div>
+
+
+{%endblock%}

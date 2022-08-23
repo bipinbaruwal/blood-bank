@@ -1,0 +1,113 @@
+{% extends 'patient/patient-header.html' %}
+{% block content %}
+{% load static %}
+<head>
+    <style>
+            .xyz{     
+        color: blue; 
+        font-size: 3ex;   
+    }
+    </style>
+</head>
+<br><br>
+<div class="container">
+    <!-- Articles Start -->
+    <section id="articles">
+        <div class="container">
+            <h2 style="display: inline-block;">Articles</h2>
+            <div class="swiper-container">
+              <div class="button-area" style="display: inline-block; margin-left: 850px;">
+                      <div class="swiper-button-next"></div>
+                      <div class="swiper-button-prev"></div>
+        
+              </div>    
+                <div class="swiper-wrapper">
+                  {% for user in data %}
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <div class="card-img-top" style="position: relative;">
+                                <img src="{{ user.image.url }}" alt="Card image" width="150px" height="200px">
+                    
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">{{ user.title }}</h4>
+                                <p class="card-text">{{user.content}}</p>
+                                <button class="btn btn-danger" onclick= "window.location.href = '/patient/patient_article'">Show more</button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                  {% endfor %}
+                  </div>
+  
+            
+                        
+            </div>
+              
+        </div>
+  
+      </section>
+    
+    <!-- Articles End -->
+<br>
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="card bg-light">
+          <div class="card-body">
+              <div class="blood">
+                <i class="fas fa-sync-alt xyz"></i>
+              </div><br>
+              <div>
+                Request Made <br>
+                  {{requestmade}}
+              </div>                            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="card bg-light">
+            <div class="card-body">
+                <div class="blood">
+                  <i class="fas fa-sync xyz"></i>
+                </div><br>
+                <div>
+                    Pending Request <br>
+                    {{requestpending}}
+                </div>                            
+            </div>
+          </div>
+      </div>
+
+      <div class="col-sm-3">
+          <div class="card bg-light">
+              <div class="card-body">
+                  <div class="blood">
+                    <i class="fas fa-check-circle xyz"></i>
+                  </div><br>
+                  <div>
+                       Approved Request<br>
+                      {{requestapproved}}
+                  </div>                            
+              </div>
+            </div>
+      </div>
+      <div class="col-sm-3">
+          <div class="card bg-light">
+              <div class="card-body">
+                  <div class="blood">
+                    <i class="fas fa-times-circle xyz"></i>
+                  </div><br>
+                  <div>
+                       Rejected Request <br>
+                      {{requestrejected}}
+                  </div>                            
+              </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock content %}
